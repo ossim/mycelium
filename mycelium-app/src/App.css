@@ -1,0 +1,54 @@
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: 'Cormorant', serif !important;
+}
+
+.App {
+  width: 100vw;
+  max-width: 960px;
+  min-height: 100vh;
+  margin: 0 auto;
+  background-color: #f8f8f8;
+}
+
+.enterfield {
+  position: absolute;
+  bottom: 50px;
+  width: inherit;
+  max-width: inherit;
+  box-sizing: border-box;
+  padding: 0 30px;
+}
+
+.intro {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  z-index: 1;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  opacity: 0;
+  background-color: black;
+  animation-name: intro-fade;
+  animation-timing-function: ease-in;
+  animation-duration: 5s;
+  animation-iteration-count: 1;
+}
+
+@keyframes intro-fade {
+  from {
+    opacity: 1;
+    z-index: 1;
+  }
+  to {
+    opacity: 0;
+    z-index: 0;
+  }
+}
