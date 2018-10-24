@@ -23,7 +23,10 @@ class App extends Component {
   constructor(props) {
     super(props);
     // Don't call this.setState() here!
-    this.state = { textFieldValue: 0 };
+    this.state = {
+      textFieldValue: "",
+      feeditems: new Array(),
+    };
   }
 
   _handleTextFieldChange(e) {
@@ -32,14 +35,28 @@ class App extends Component {
     });
   }
 
+  handleTextInput(e) {
+    var newfeeditems = this.state.feeditems.concat(e)
+    this.setState({
+      textFieldValue: "",
+      feeditems: newfeeditems
+    })
+  }
+
   render() {
+    const inputProps = {
+      value: this.state.textFieldValue
+    };
+
+    console.log(this.state.textFieldValue)
+
     return (
       <MuiThemeProvider theme={theme}>
         <div className="App">
 
           <div className="scrollerfield">
             <TextFeed
-
+              feeditems={this.state.feeditems}
             />
           </div>
 
@@ -49,13 +66,14 @@ class App extends Component {
                 console.log(`Pressed keyCode ${ev.key}`);
                 if (ev.key === 'Enter') {
                   // Do code here
-                  console.log(`${this.state.textFieldValue}`);
+                  this.handleTextInput(this.state.textFieldValue);
                   ev.preventDefault();
                 }
               }}
               id="text_enter"
               placeholder="What to do..."
               onChange={this._handleTextFieldChange.bind(this)}
+              inputProps={inputProps}
               fullWidth
               margin="normal"
             />
