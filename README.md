@@ -6,4 +6,4 @@
 
 mycelium is a text adventure built in react. it explores dreams, madness, and a healthy dose of body horror.
 
-![in progress screenshot](https://imgur.com/y3UoXpg)
+![in progress screenshot](https://i.imgur.com/y3UoXpg.png)
