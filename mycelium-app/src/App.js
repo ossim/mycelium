@@ -15,18 +15,28 @@ const theme = createMuiTheme({
   }
 });
 
-let chapter = "intro"
-let text = []
-
-
 class App extends Component {
   constructor(props) {
     super(props);
+
     // Don't call this.setState() here!
     this.state = {
       textFieldValue: "",
-      feeditems: new Array(),
+      chapter: 'intro',
+      feedItems: []
     };
+  }
+
+  scrollToBottom = () => {
+    this.messagesEnd.scrollIntoView({ behavior: "smooth" });
+  }
+
+  componentDidMount() {
+    this.scrollToBottom();
+  }
+
+  componentDidUpdate() {
+    this.scrollToBottom();
   }
 
   _handleTextFieldChange(e) {
@@ -36,17 +46,62 @@ class App extends Component {
   }
 
   handleTextInput(e) {
-    var newfeeditems = this.state.feeditems.concat(e)
+    var newFeedObject = {
+      text: e,
+      type: 'user'
+    }
+    var newFeedItems = this.state.feedItems.concat(newFeedObject)
+    var responses = this.handleTextResponse(e)
+    if (responses != []) {
+      for (var response of responses) {
+        newFeedItems.push(response)
+      }
+    }
+
     this.setState({
       textFieldValue: "",
-      feeditems: newfeeditems
+      feedItems: newFeedItems
     })
   }
+
+  handleTextResponse(e) {
+    var responses = []
+    console.log("handling intro response", this.state.chapter, e)
+    if (this.state.chapter == "intro" && e == "intro") {
+      responses.push({
+        text: "Fungus grows best in dark, warm, and damp places.",
+        type: "user"
+      })
+      responses.push({
+        text: "The symphonic smattering of rain is a stark contrast to the mechanical hum of a single bulb. The tempest hits strong tonight outside the concrete cell, spiteful in the face of the past months of drought. The rain disturbs old dust and old memories in their endless fields.",
+        type: "life"
+      })
+      responses.push({
+        text: "A figure lies upon a solitary cot in the middle of the cell illuminated by the bulb. It is immobile, weak. Beside the cot, a metal platter is splayed just out of reach.",
+        type: "life"
+      })
+    }
+
+    else {
+      responses.push({
+        text: "I don't understand this input. Try examining anything you can see.",
+        type: "life"
+      })
+    }
+    return responses
+  }
+
 
   render() {
     const inputProps = {
       value: this.state.textFieldValue
     };
+    if (this.state.feedItems.length == 0) {
+      console.log("gotta set")
+      this.setState({
+        feedItems: this.handleTextResponse('intro')
+      })
+    }
 
     console.log(this.state.textFieldValue)
 
@@ -56,8 +111,11 @@ class App extends Component {
 
           <div className="scrollerfield">
             <TextFeed
-              feeditems={this.state.feeditems}
+              feedItems={this.state.feedItems}
             />
+            <div style={{ float:"left", clear: "both" }}
+               ref={(el) => { this.messagesEnd = el; }}>
+            </div>
           </div>
 
           <div className="enterfield">

@@ -8,8 +8,12 @@ class TextFeed extends Component {
 
   render() {
     var itemdivs = []
-    for (var item of this.props.feeditems) {
-      itemdivs.push(<div className="feeditem">{item}</div>)
+    for (var item of this.props.feedItems) {
+      if (item.type == "user") {
+        itemdivs.push(<div className="feeditem"><i>{item.text}</i></div>)
+      } else if (item.type == "life") {
+        itemdivs.push(<div className="feeditem">{item.text}</div>)
+      }
     }
 
     return (
