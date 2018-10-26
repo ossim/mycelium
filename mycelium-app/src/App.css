@@ -11,8 +11,17 @@ body {
   transition: all 0.2s ease;
 }
 
+.enterfield.dream {
+  animation: dreambg 4s linear infinite;
+}
+
 .dream {
-  background-color: pink;
+  animation: dreambg 4s linear infinite;
+}
+
+@keyframes dreambg {
+  0%, 100% {background-color: white}
+  50% {background-color: lightgrey}
 }
 
 .App {
@@ -48,7 +57,7 @@ body {
 }
 
 @keyframes dreamColors1 {
-  0%, 50%, 100% {color: purple}
+  0%, 50%, 100% {color: red}
   20% {color: green}
   70% {color: red}
 }
@@ -114,10 +123,6 @@ body {
   padding: 10px 30px 80px 30px;
   background-color: white;
   transition: all 0.2s ease;
-}
-
-.enterfield.dream {
-  background-color: pink;
 }
 
 .errormessage {

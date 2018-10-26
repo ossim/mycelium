@@ -194,7 +194,11 @@ class App extends Component {
     if (this.state.chapter == "1" || this.state.chapter == "1a") {
       if (e == "examine platter") {
         responses.push({
-          text: "A bowl of dull grey mush sits in the middle of the platter. Crowning the mush is a crust of thin, downy white mold. Minute black specks pepper its surface, so numerous and small they seem to be vibrating. Droplets of moisture sit suspended on the microscopic ends of individual hairs. The fungus slowly absorbs this moisture, molecule by molecule. This is where the odor is coming from.",
+          text: "A bowl of dull grey mush sits in the middle of the platter. Crowning the mush is a crust of thin, downy white mold. Minute black specks pepper its surface, so numerous and small they seem to be vibrating. Droplets of moisture sit suspended on the microscopic ends of individual hairs. The fungus slowly absorbs this moisture, molecule by molecule. ",
+          type: "life"
+        })
+        responses.push({
+          text: "This must be where the odor is coming from.",
           type: "life"
         })
         this.setState({chapter: "1a"});
