@@ -3,7 +3,16 @@ body {
   height: 100vh;
   margin: 0;
   padding: 0;
-  font-family: 'Cormorant', serif !important;
+  font-family: 'Cormorant', serif;
+  font-size: 18px;
+}
+
+.container {
+  transition: all 0.2s ease;
+}
+
+.dream {
+  background-color: pink;
 }
 
 .App {
@@ -15,12 +24,85 @@ body {
   max-width: 960px;
   min-height: 100vh;
   margin: 0 auto;
-  background-color: #f8f8f8;
+}
+
+.logo {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 20px;
+  text-align: center;
+  font-size: 18px;
 }
 
 .scrollerfield{
-  padding: 0 30px 180px 30px;
+  padding: 30px 30px 150px 30px;
   box-sizing: border-box;
+}
+
+.dream1 {
+  animation-name: dreamColors1;
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes dreamColors1 {
+  0%, 50%, 100% {color: purple}
+  20% {color: green}
+  70% {color: red}
+}
+
+.dream2 {
+  animation-name: dreamColors2;
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes dreamColors2 {
+  0%, 50%, 100% {color: black}
+  20% {color: maroon}
+  70% {color: red}
+}
+
+.dream3 {
+  animation-name: dreamColors3;
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes dreamColors3 {
+  0%, 50%, 100% {color: darkgreen}
+  20% {color: green}
+  70% {color: black}
+}
+
+.dream4 {
+  animation-name: dreamColors4;
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes dreamColors4 {
+  0%, 50%, 100% {color: black}
+  20% {color: white}
+  70% {color: grey}
+}
+
+.dream5 {
+  animation-name: dreamColors5;
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes dreamColors5 {
+  0%, 50%, 100% {color: black}
+  20% {color: goldenrod}
+  70% {color: gold}
 }
 
 .enterfield {
@@ -31,10 +113,43 @@ body {
   box-sizing: border-box;
   padding: 10px 30px 80px 30px;
   background-color: white;
+  transition: all 0.2s ease;
 }
 
+.enterfield.dream {
+  background-color: pink;
+}
+
+.errormessage {
+  position: fixed;
+  bottom: 0;
+  width: inherit;
+  max-width: inherit;
+  box-sizing: border-box;
+  padding: 10px 30px 80px 30px;
+  background-color: white;
+  color: red;
+  opacity: 0;
+}
+
+.flash {
+  animation-name: flash_error;
+  animation-duration: 4s;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+}
+
+@keyframes flash_error {
+  0% {opacity: 0};
+  5% {opacity: 1};
+  50% {opacity: 1};
+  100% {opacity: 0};
+
+}
+
+
 .feeditem {
-  margin-top: 30px;
+  margin-top: 15px;
 }
 
 .intro {
