@@ -349,7 +349,7 @@ class App extends Component {
           })
           this.setState({chapter: "2"})
         }
-        if (this.state.chapter == "dream 2c") {
+        else if (this.state.chapter == "dream 2c") {
           responses.push({
             text: "You lie upon a solitary cot in the middle of the room illuminated by the bulb. You are immobile, weak. Beside the cot, a metal platter is splayed just out of reach.",
             type: "life"
@@ -461,7 +461,7 @@ class App extends Component {
       }
       else if (e == "examine rashes" || e == "examine body" || e == "examine skin" || e == "examine rings") {
         responses.push({
-          text: "The figure suddenly jolts awake. It siezes in a coughing fit, phlegm black as night dribbling down its chin. Its eyes are dark and sunken, and a deep red color. It grips its own forearm above a particularly dark red rash. You watch as the surface of the figure’s skin bubbles with small holes, as though its pores are begging to open to release inner toxin. Tiny green heads of mushrooms wriggle out of the holes in the skin. The heavy athsmatic coughs smother the figure’s groans of agony.",
+          text: "The figure suddenly jolts awake. It seizes in a coughing fit, phlegm black as night dribbling down its chin. Its eyes are dark and sunken, and a deep red color. It grips its own forearm above a particularly dark red rash. You watch as the surface of the figure’s skin bubbles with small holes, as though its pores are begging to open to release inner toxin. Tiny green heads of mushrooms wriggle out of the holes in the skin. The heavy athsmatic coughs smother the figure’s groans of agony.",
           type: "dream3"
         })
         responses.push({
@@ -469,6 +469,12 @@ class App extends Component {
           type: "dream3"
         })
         this.setState({chapter: "dream 3a"});
+      }
+      else if ((e == "examine mushroom" || e == "examine mushrooms") && (this.state.chapter == "dream 3a")) {
+        responses.push({
+          text: "The mushrooms shine like emeralds.",
+          type: "dream3"
+        })
       }
       else if (e.startsWith("examine")) {
         responses.push({
@@ -565,7 +571,7 @@ class App extends Component {
           text: "All you see is black.",
           type: "dream4"
         })
-        this.setState({chapter: "dream 3"})
+        this.setState({chapter: "dream 4"})
       }
     }
 
@@ -576,7 +582,7 @@ class App extends Component {
           type: "dream4"
         })
       }
-      if (e == "take mushroom" || e == "grab mushroom" || e == "collect mushroom") {
+      else if (e == "take mushroom" || e == "grab mushroom" || e == "collect mushroom") {
         responses.push({
           text: "You collect the massive black mushroom that obscures your view.",
           type: "dream4"

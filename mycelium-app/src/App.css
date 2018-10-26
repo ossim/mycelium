@@ -12,11 +12,11 @@ body {
 }
 
 .enterfield.dream {
-  animation: dreambg 4s linear infinite;
+  animation: dreambg 10s linear infinite;
 }
 
 .dream {
-  animation: dreambg 4s linear infinite;
+  animation: dreambg 10s linear infinite;
 }
 
 @keyframes dreambg {
@@ -51,13 +51,13 @@ body {
 
 .dream1 {
   animation-name: dreamColors1;
-  animation-duration: 3s;
+  animation-duration: 10s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
 }
 
 @keyframes dreamColors1 {
-  0%, 50%, 100% {color: red}
+  0%, 50%, 100% {color: black}
   20% {color: green}
   70% {color: red}
 }
@@ -77,20 +77,20 @@ body {
 
 .dream3 {
   animation-name: dreamColors3;
-  animation-duration: 3s;
+  animation-duration: 6s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
 }
 
 @keyframes dreamColors3 {
-  0%, 50%, 100% {color: darkgreen}
-  20% {color: green}
-  70% {color: black}
+  0%, 50%, 100% {color: green}
+  20% {color: darkgreen}
+  70% {color: darkgreen}
 }
 
 .dream4 {
   animation-name: dreamColors4;
-  animation-duration: 3s;
+  animation-duration: 10s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
 }
