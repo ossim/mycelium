@@ -177,7 +177,7 @@ class App extends Component {
           type: "dream1"
         })
         responses.push({
-          text: "You want to start a garden. You might take the samples of future fungus you find.",
+          text: "You want to start a garden. You might take the samples of future mushrooms you find.",
           type: "dream1"
         })
       }
@@ -313,7 +313,7 @@ class App extends Component {
         }
         if (this.state.chapter == "dream 2b") {
           responses.push({
-            text: "Red mushrooms continue erupting from the crab’s wound. It staggers, losing its balance from the weight of the fungus.",
+            text: "Red mushrooms continue erupting from the crab’s wound. It staggers, losing its balance from the new weight.",
             type: "dream2"
           })
         }
