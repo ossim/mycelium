@@ -77,6 +77,7 @@ class App extends Component {
     console.log("handling intro response", this.state.chapter, e)
 
     e = e.trim().toLowerCase()
+    e = e.replace(" the ", " ")
 
     if (e == "help" || e == "?") {
       responses.push({
@@ -103,6 +104,18 @@ class App extends Component {
       if (e == "examine platter") {
         responses.push({
           text: "A bowl of dull grey mush sits in the middle of the platter. No utensil. This is nutritious, but the flavor has long since boiled away.",
+          type: "life"
+        })
+      }
+      if (e.startsWith("eat ")) {
+        responses.push({
+          text: "The platter is out of reach. You are unable to eat.",
+          type: "life"
+        })
+      }
+      if (e.startsWith("get out ") || e == "get up") {
+        responses.push({
+          text: "Your body is frail. You try to get up, but it is fruitless. For now, you feel like you are only able to examine with your eyes.",
           type: "life"
         })
       }
@@ -168,7 +181,7 @@ class App extends Component {
           type: "dream1"
         })
       }
-      if (e == "take mushroom" || e == "take mushrooms" || e == "eat mushrooms") {
+      if (e == "take mushroom" || e == "take mushrooms" || e == "grab mushroom" || e == "grab mushrooms" || e == "collect mushroom" || e == "collect mushrooms") {
         responses.push({
           text: "The mesh of mold bends away from your reach and the illusory mushrooms fold away with it. No matter how hard you reach, these fruits are not yours to harvest.",
           type: "dream1"
@@ -261,6 +274,10 @@ class App extends Component {
             text: "The monk’s eyes are as red as his robes. Dark, small pupils sit in the center of the red spheres. They glimmer like rubies. Oddly, it does not look out of place on his gaunt face, cut with two large cheekbones and shallow cheeks.",
             type: "dream2"
           })
+          responses.push({
+            text: "His hands gesture toward the crabs.",
+            type: "dream2"
+          })
         }
         if (this.state.chapter == "dream 2a") {
           responses.push({
@@ -307,7 +324,7 @@ class App extends Component {
           type: "dream2"
         })
       }
-      if ((e == "take mushroom" || e == "take mushrooms" || e == "grab mushroom" || e == "grab mushrooms") && this.state.chapter == "dream 2b") {
+      if ((e == "take mushroom" || e == "take mushrooms" || e == "grab mushroom" || e == "grab mushrooms" || e == "collect mushroom" || e == "collect mushrooms") && this.state.chapter == "dream 2b") {
         responses.push({
           text: "You take a handful of mushrooms from the crab’s stub.",
           type: "dream2"
@@ -410,7 +427,7 @@ class App extends Component {
           type: "life"
         })
       }
-      if (e == "examine air" || e == "examine cough" || e == "cough" || e == "examine self" || e == "examine figure") {
+      if (e == "cough" || e.startsWith("sniff ") || e == "examine air" || e == "examine cough" || e == "cough" || e == "examine self" || e == "examine figure") {
         responses.push({
           text: "Your coughs are deep and heavy, roaring from the bottom of your lungs. Gooey phlegm coats your mouth and lips with each heave.",
           type: "life"
@@ -418,7 +435,7 @@ class App extends Component {
       }
       if (e == "examine phlegm") {
         responses.push({
-          text: "The phlegm is cloudy. If you look closely, you can see minute, barely visible black specks suspended in the mixture.",
+          text: "The phlegm is cloudy. You can see minute, barely visible black specks suspended in the mixture.",
           type: "life"
         })
       }
@@ -455,13 +472,13 @@ class App extends Component {
       }
       else if (e == "examine figure") {
         responses.push({
-          text: "The figure is mostly motionless. Red rashes in the shape of rings the size of coins stain its pallid skin. In the dim light of bulb, the rashes seem to pulse and writhe in time with the figure’s heartbeat.",
+          text: "The figure is mostly motionless. Red ring-shaped rashes the size of coins stain its pallid skin. They pulse and writhe in time with the figure’s heartbeat.",
           type: "dream3"
         })
       }
       else if (e == "examine rashes" || e == "examine body" || e == "examine skin" || e == "examine rings") {
         responses.push({
-          text: "The figure suddenly jolts awake. It seizes in a coughing fit, phlegm black as night dribbling down its chin. Its eyes are dark and sunken, and a deep red color. It grips its own forearm above a particularly dark red rash. You watch as the surface of the figure’s skin bubbles with small holes, as though its pores are begging to open to release inner toxin. Tiny green heads of mushrooms wriggle out of the holes in the skin. The heavy athsmatic coughs smother the figure’s groans of agony.",
+          text: "The figure suddenly jolts awake. It seizes in a coughing fit, phlegm black as night dribbling down its chin. It grips its forearm above a particularly dark rash. You watch as the surface of the figure’s skin bubbles with small holes, as though its pores are begging to open to release inner toxin. Tiny green heads of mushrooms wriggle out of the holes in the skin. The heavy athsmatic coughs smother the figure’s groans of agony.",
           type: "dream3"
         })
         responses.push({
@@ -578,11 +595,11 @@ class App extends Component {
     if (this.state.chapter.startsWith("dream 4")) {
       if (e == "examine black") {
         responses.push({
-          text: "It is so black it seems palpable. You reach out into the darkness and your hand connects with matter.",
+          text: "It is so black it seems palpable. You reach out into the darkness and your hand connects with thick, spongy matter.",
           type: "dream4"
         })
       }
-      else if (e == "take mushroom" || e == "grab mushroom" || e == "collect mushroom") {
+      else if (e == "take mushroom" || e == "take mushrooms" || e == "grab mushroom" || e == "grab mushrooms" || e == "collect mushroom" || e == "collect mushrooms") {
         responses.push({
           text: "You collect the massive black mushroom that obscures your view.",
           type: "dream4"
@@ -738,6 +755,12 @@ class App extends Component {
       else if (e.startsWith("examine")) {
         responses.push({
           text: "You can't examine that.",
+          type: "life"
+        })
+      }
+      else if (e == "sleep") {
+        responses.push({
+          text: "It is not enough to merely sleep. You must dream.",
           type: "life"
         })
       }
